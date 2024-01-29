@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedInteger('price');
             $table->smallInteger('stock')->nullable();
-            $table->string('description', 100)->nullable();
+            $table->string('description', 256)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

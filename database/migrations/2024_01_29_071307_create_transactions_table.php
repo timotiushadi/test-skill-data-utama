@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('payment_amount');
             $table->foreignId('product_id')->index('fk_products_to_transaction');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
