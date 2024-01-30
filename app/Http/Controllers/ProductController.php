@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Http\Resources\ProductCollection;
 use App\Models\User;
 
 use App\Http\Requests\Product\Store;
 use App\Http\Requests\Product\Update;
 
-use Str;
-use Auth;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -25,7 +24,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::orderBy('deleted_at')->get();
+        $product = new ProductCollection(Product::paginate(10));
+        // dd($product);
 
         return Inertia::render('Product/Index',[
             'product' => $product

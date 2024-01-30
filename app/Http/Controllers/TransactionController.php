@@ -2,17 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
+use App\Http\Resources\TransactionCollection;
+
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $transaction = new TransactionCollection(Transaction::paginate(10));
+        // dd($transaction);
+
+        return Inertia::render('Transaction/Index',[
+            'transaction' => $transaction
+        ]);
     }
 
     /**
