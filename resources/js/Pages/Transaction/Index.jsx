@@ -14,6 +14,11 @@ export default function Index({ auth, flashMessage, transaction }) {
             {flashMessage?.message && (
                 <FlashMessage message={flashMessage.message} />
             )}
+            <Link href={route("addTransaction")} method="POST">
+                <Button type="button" className=" w-40 mb-8 ">
+                    Test New Transaction to API DataUtama
+                </Button>
+            </Link>
             <table className="table-fixed w-full text-center">
                 <thead>
                     <tr>

@@ -24,6 +24,8 @@ Route::redirect('/', '/login');
 Route::middleware(['auth','verified'])->group(function () {
     Route::resource('/home', DashboardController::class);
     Route::resource('/product', ProductController::class);
+
+    Route::post('/add_transaction', [TransactionController::class, 'addTransaction'])->name('addTransaction');
     Route::resource('/transaction', TransactionController::class);
 });
 
